@@ -10,7 +10,7 @@ st.markdown("Carga de Archivos")
 file1 = st.file_uploader(
     "Arrastra el archivo CSV exportado de la página Rhino", type=['csv'])
 file2 = st.file_uploader(
-    "Arrastra el archivo CSV del inventario diario", type=['xlsx', 'xls'])
+    "Arrastra el archivo archivo excel del inventario diario", type=['xlsx', 'xls'])
 
 if file1 and file2:
     # leer datos
