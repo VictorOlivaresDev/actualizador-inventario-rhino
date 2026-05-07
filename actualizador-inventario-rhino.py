@@ -32,7 +32,7 @@ if file1 and file2:
     col1.metric("Encontrados en Backorder", len(skus_backorder))
 
     with st.expander("Ver vista previa de cambios"):
-        st.dataframe(df1[['SKU', '¿En inventario?']].head(len(skus_backorder)))
+        st.dataframe(df1[['SKU']].head(len(skus_backorder)))
 
     # Creación y codificación de archivo nuevo
     csv_data = df1.to_csv(index=False, encoding='utf-8-sig')
