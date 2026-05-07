@@ -28,6 +28,7 @@ if file1 and file2:
 
     # Resumen para el usuario
     st.success("Archivos procesados correctamente")
+    st.balloons()
     col1, col2 = st.columns(2)
     col1.metric("Encontrados en Backorder", len(skus_backorder))
 
