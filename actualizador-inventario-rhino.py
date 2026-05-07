@@ -10,12 +10,12 @@ st.markdown("Carga de Archivos")
 file1 = st.file_uploader(
     "Arrastra el archivo CSV exportado de la página Rhino", type=['csv'])
 file2 = st.file_uploader(
-    "Arrastra el archivo CSV del inventario diario", type=['csv'])
+    "Arrastra el archivo CSV del inventario diario", type=['xlsx', 'xls'])
 
 if file1 and file2:
     # leer datos
     df1 = pd.read_csv(file1)
-    df2 = pd.read_csv(file2)
+    df2 = pd.read_excel(file2)
     # Procesamiento
 
     # Extraer skus en Backorder
@@ -32,7 +32,7 @@ if file1 and file2:
     col1, col2 = st.columns(2)
     col1.metric("Encontrados en Backorder", len(skus_backorder))
 
-    with st.expander("Ver vista previa de cambios"):
+    with st.expander("Ver lista de SKUs modificados"):
         st.dataframe(df1[['SKU']].head(len(skus_backorder)))
 
     # Creación y codificación de archivo nuevo
