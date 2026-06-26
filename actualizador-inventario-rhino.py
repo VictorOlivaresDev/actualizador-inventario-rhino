@@ -10,7 +10,7 @@ st.markdown("Carga de Archivos")
 file1 = st.file_uploader(
     "Arrastra el archivo CSV exportado de la página Rhino", type=['csv'])
 file2 = st.file_uploader(
-    "Arrastra el archivo archivo excel del inventario diario", type=['xlsx', 'xls'])
+    "Arrastra el archivo archivo excel del inventario diario", type=['xlsx', 'xls'], key="excel_rhino")
 
 if file1 and file2:
     # leer datos
@@ -55,12 +55,12 @@ st.markdown("Carga de Archivos")
 file3 = st.file_uploader(
     "Arrastra el archivo CSV exportado de la página Básculas electrónicas", type=['csv'])
 file4 = st.file_uploader(
-    "Arrastra el archivo archivo excel del inventario diario", type=['xlsx', 'xls'])
+    "Arrastra el archivo archivo excel del inventario diario", type=['xlsx', 'xls'], key="excel_basculas")
 
 if file3 and file4:
     # leer datos
-    df3 = pd.read_csv(file1)
-    df4 = pd.read_excel(file2)
+    df3 = pd.read_csv(file3)
+    df4 = pd.read_excel(file4)
     # Procesamiento
 
     # Extraer skus en Backorder
@@ -79,8 +79,8 @@ if file3 and file4:
     col1.metric("Encontrados en Backorder", len(skus_backorder))
 
     with st.expander("Ver Resultado"):
-        st.dataframe(df1[df1['¿En inventario?'] == 0]
-                     [['SKU', '¿En inventario?']])
+        st.dataframe(df3[df3['Available (not editable)'] == 0]
+                     [['SKU', 'Available (not editable)']])
 
     # Creación y codificación de archivo nuevo
     csv_data = df3.to_csv(index=False, encoding='utf-8-sig')
