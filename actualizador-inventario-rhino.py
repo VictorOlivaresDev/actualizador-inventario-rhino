@@ -47,7 +47,7 @@ if file1 and file2:
         file_name='wc-product-ACTUALIZADO.csv',
     )
 
-st.title("Actualizador de Inventario Básculas Electrónicas")
+""" st.title("Actualizador de Inventario Básculas Electrónicas")
 
 st.markdown("Carga de Archivos")
 
@@ -93,5 +93,5 @@ if file3 and file4:
         data=csv_resultado,
         file_name='inventory_export_Actualizado.csv',
     )
-
-    st.title("Soy uno con la fuerza, la fuerza está conmigo")
+ """
+st.title("Soy uno con la fuerza, la fuerza está conmigo")
