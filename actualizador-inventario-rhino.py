@@ -71,6 +71,7 @@ if file3 and file4:
     df3['On hand (current)'] = 999
     # Cambiar a 0 los skus en backorder
     df3.loc[df3['SKU'].isin(skus_backorder), 'Available (not editable)'] = 0
+    df3.loc[df3['SKU'].isin(skus_backorder), 'On hand (current)'] = 0
 
     # Resumen para el usuario
     st.success("Archivos procesados correctamente")
