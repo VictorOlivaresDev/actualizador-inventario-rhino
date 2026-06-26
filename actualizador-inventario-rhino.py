@@ -90,7 +90,7 @@ if file3 and file4:
     st.download_button(
         label='Descargar Inventario Básculas Actualizado',
         data=csv_resultado,
-        file_name='inventory_export_Actualizado',
+        file_name='inventory_export_Actualizado.csv',
     )
 
     st.title("Soy uno con la fuerza, la fuerza está conmigo")
