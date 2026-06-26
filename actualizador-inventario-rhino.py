@@ -42,7 +42,7 @@ if file1 and file2:
 
     # Descargar Archivo nuevo
     st.download_button(
-        label='Descargar Inventario Actualizado',
+        label='Descargar Inventario Rhino Actualizado',
         data=csv_resultado,
         file_name='wc-product-ACTUALIZADO.csv',
     )
@@ -88,9 +88,9 @@ if file3 and file4:
 
     # Descargar Archivo nuevo
     st.download_button(
-        label='Descargar Inventario Actualizado',
+        label='Descargar Inventario Básculas Actualizado',
         data=csv_resultado,
-        file_name='wc-product-ACTUALIZADO.csv',
+        file_name='inventory_export_Actualizado',
     )
 
     st.title("Soy uno con la fuerza, la fuerza está conmigo")
