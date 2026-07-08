@@ -100,4 +100,4 @@ if file3 and file4:
         file_name='inventory_export_Actualizado.csv',
     )
 
-st.title("Soy uno con la fuerza, la fuerza está conmigo.")
+st.title("Soy uno con la fuerza, la fuerza está conmigo")
