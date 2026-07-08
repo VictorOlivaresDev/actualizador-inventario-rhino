@@ -75,7 +75,9 @@ if file3 and file4:
     df3.loc[tiene_contenido, 'Variant Inventory Qty'] = 999
 
     # Cambiar a 0 los skus en backorder
-    df3.loc[df3['Type'].isin(skus_backorder), 'Variant Inventory Qty'] = 0
+    en_backorder_y_con_contenido = df3['Type'].isin(
+        skus_backorder) & tiene_contenido
+    df3.loc[en_backorder_y_con_contenido, 'Variant Inventory Qty'] = 0
 
     # Resumen para el usuario
     st.success("Archivos procesados correctamente")
