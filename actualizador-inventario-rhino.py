@@ -47,7 +47,7 @@ if file1 and file2:
         file_name='wc-product-ACTUALIZADO.csv',
     )
 
-""" st.title("Actualizador de Inventario Básculas Electrónicas")
+st.title("Actualizador de Inventario Básculas Electrónicas")
 
 st.markdown("Carga de Archivos")
 
@@ -66,12 +66,14 @@ if file3 and file4:
     # Extraer skus en Backorder
     df_backorder = df4[df4['TIPO DE ABASTO'] == 'BACKORDER']
     skus_backorder = df_backorder['MODELO']
+
     # Devolver todo el inventario a 999
-    df3['Available (not editable)'] = 999
-    df3['On hand (current)'] = 999
+    if df3['Type'] != '':
+        df3['Variant Inventory Qty'] = 999
+
     # Cambiar a 0 los skus en backorder
-    df3.loc[df3['SKU'].isin(skus_backorder), 'Available (not editable)'] = 0
-    df3.loc[df3['SKU'].isin(skus_backorder), 'On hand (current)'] = 0
+    df3.loc[df3['Type'].isin(skus_backorder), 'Variant Inventory Qty'] = 0
+    df3.loc[df3['Type'].isin(skus_backorder), 'Variant Inventory Qty'] = 0
 
     # Resumen para el usuario
     st.success("Archivos procesados correctamente")
@@ -93,5 +95,5 @@ if file3 and file4:
         data=csv_resultado,
         file_name='inventory_export_Actualizado.csv',
     )
- """
+
 st.title("Soy uno con la fuerza, la fuerza está conmigo")
