@@ -85,7 +85,7 @@ if file3 and file4:
 
     with st.expander("Ver Resultado"):
         st.dataframe(df3[df3['Variant Inventory Qty'] == 0]
-                     [['SKU', 'Variant Inventory Qty']])
+                     [['Type', 'Variant Inventory Qty']])
 
     # Creación y codificación de archivo nuevo
     csv_data = df3.to_csv(index=False, encoding='utf-8-sig')
