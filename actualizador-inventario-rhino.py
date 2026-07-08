@@ -69,7 +69,6 @@ if file3 and file4:
     skus_backorder = df_backorder['MODELO']
 
     # Devolver todo el inventario a 999
-    df3['Variant Inventory Qty'] = 0
     tiene_contenido = df3['Type'].notna() & (
         df3['Type'].astype(str).str.strip() != '')
     df3.loc[tiene_contenido, 'Variant Inventory Qty'] = 999
