@@ -60,7 +60,7 @@ file4 = st.file_uploader(
 
 if file3 and file4:
     # leer datos
-    df3 = pd.read_csv(file3)
+    df3 = pd.read_csv(file3, encoding='utf-8')
     df4 = pd.read_excel(file4)
     # Procesamiento
 
@@ -89,14 +89,13 @@ if file3 and file4:
                      [['Type', 'Variant Inventory Qty']])
 
     # Creación y codificación de archivo nuevo
-    csv_data = df3.to_csv(index=False, encoding='utf-8-sig')
-    csv_resultado = csv_data.encode('utf-8-sig')
+    csv_data = df3.to_csv(index=False, encoding='utf-8')
 
     # Descargar Archivo nuevo
     st.download_button(
         label='Descargar Inventario Básculas Actualizado',
-        data=csv_resultado,
+        data=csv_data,
         file_name='inventory_export_Actualizado.csv',
     )
 
-st.title("Soy uno con la fuerza, la fuerza está conmigo...")
+st.title("Soy uno con la fuerza, la fuerza está conmigo")
