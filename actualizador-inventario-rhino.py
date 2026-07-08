@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
 
 st.set_page_config(page_title="Rhino Inventarios", page_icon="🦏")
 st.title("Actualizador de Inventario Página Rhino")
@@ -68,11 +69,12 @@ if file3 and file4:
     skus_backorder = df_backorder['MODELO']
 
     # Devolver todo el inventario a 999
-    if df3['Type'] != '':
-        df3['Variant Inventory Qty'] = 999
+    df3['Variant Inventory Qty'] = 0
+    tiene_contenido = df3['Type'].notna() & (
+        df3['Type'].astype(str).str.strip() != '')
+    df3.loc[tiene_contenido, 'Variant Inventory Qty'] = 999
 
     # Cambiar a 0 los skus en backorder
-    df3.loc[df3['Type'].isin(skus_backorder), 'Variant Inventory Qty'] = 0
     df3.loc[df3['Type'].isin(skus_backorder), 'Variant Inventory Qty'] = 0
 
     # Resumen para el usuario
@@ -82,8 +84,8 @@ if file3 and file4:
     col1.metric("Encontrados en Backorder", len(skus_backorder))
 
     with st.expander("Ver Resultado"):
-        st.dataframe(df3[df3['Available (not editable)'] == 0]
-                     [['SKU', 'Available (not editable)']])
+        st.dataframe(df3[df3['Variant Inventory Qty'] == 0]
+                     [['SKU', 'Variant Inventory Qty']])
 
     # Creación y codificación de archivo nuevo
     csv_data = df3.to_csv(index=False, encoding='utf-8-sig')
@@ -96,4 +98,4 @@ if file3 and file4:
         file_name='inventory_export_Actualizado.csv',
     )
 
-st.title("Soy uno con la fuerza, la fuerza está conmigo")
+st.title("Soy uno con la fuerza, la fuerza está conmigo.")
